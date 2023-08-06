@@ -1,0 +1,27 @@
+{
+  "name": "@dulanHewage/puppeteer-infinite-scroller",
+  "version": "1.0.0",
+  "description": "Provides a simple and efficient solution for scraping data loaded through infinite scrolling on web pages using Puppeteer.",
+  "main": "index.js",
+  "scripts": {
+    "test:unit": "jest --config ./jest.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DulanHewage/puppeteer-infinite-scroller.git"
+  },
+  "license": "MIT",
+  "author": "Dulan Hewage <dulanhewage2@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/DulanHewage/puppeteer-infinite-scroller/issues"
+  },
+  "homepage": "https://github.com/DulanHewage/puppeteer-infinite-scroller#readme",
+  "keywords": [
+    "headless-chrome",
+    "puppeteer",
+    "scraping",
+    "scroll",
+    "auto-scroller",
+    "infinite-scroll"
+  ]
+}
