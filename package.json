@@ -4,7 +4,7 @@
   "description": "Provides a simple and efficient solution for scraping data loaded through infinite scrolling on web pages using Puppeteer.",
   "main": "index.js",
   "scripts": {
-    "test:unit": "jest --config ./jest.config.js"
+    "test:unit": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,9 @@
     "scroll",
     "auto-scroller",
     "infinite-scroll"
-  ]
+  ],
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "puppeteer": "^21.0.1"
+  }
 }

@@ -55,9 +55,9 @@ async function recursiveScroll(
   scrollDelay
 ) {
   if (itemCount <= items.length) {
-    return items;
+    // slice the array to match the itemCount
+    return items.slice(0, itemCount);
   }
-
   let extractedItems = [];
 
   if (selector) {
