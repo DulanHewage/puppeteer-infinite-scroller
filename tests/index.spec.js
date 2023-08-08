@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const puppeteerInfiniteScroller = require("../index");
-const { error } = require("console");
+// const { error } = require("console");
 
 describe("puppeteerInfiniteScroller", () => {
   let browser;
@@ -22,6 +22,15 @@ describe("puppeteerInfiniteScroller", () => {
     });
     await pageWithSelectorOption.goto(pageUrl);
     await pageWithSelectorOption.waitForSelector(selector);
+
+    // initialize page with pageFunction option
+    pageWithPageFunctionOption = await browser.newPage();
+    await pageWithPageFunctionOption.setViewport({
+      width: 1200,
+      height: 800,
+    });
+    await pageWithPageFunctionOption.goto(pageUrl);
+    await pageWithPageFunctionOption.waitForSelector(selector);
   });
 
   // selector option tests
@@ -52,31 +61,40 @@ describe("puppeteerInfiniteScroller", () => {
     expect(scrapedData[0]).toHaveProperty("tagName");
   });
 
-  // it('scrapes data using pageFunction option', async () => {
-  //   const options = {
-  //     scrollDelay: 1000,
-  //     itemCount: 50,
-  //     pageFunction: () => {
-  //       // Custom function for scraping data
-  //       const extractedElements = document.querySelectorAll('.box img');
-  //       const items = [];
-  //       for (let element of extractedElements) {
-  //         items.push({
-  //           alt: element.getAttribute('alt'),
-  //           id: element.closest('a').getAttribute('href').split('/')[2],
-  //           src: element.getAttribute('src'),
-  //         });
-  //       }
-  //       return items;
-  //     },
-  //   };
+  // pageFunction option tests
+  it(
+    "scrapes data using pageFunction option",
+    async () => {
+      const options = {
+        scrollDelay: 1000,
+        itemCount: 200,
+        pageFunction: () => {
+          // Custom function for scraping data
+          const items = [];
+          const extractedElements = document.querySelectorAll(
+            ".blocks .blocks__block"
+          );
+          for (let element of extractedElements) {
+            items.push({
+              class: element.getAttribute("class"),
+              id: element.getAttribute("id"),
+              tagName: element.tagName,
+            });
+          }
+          return items;
+        },
+      };
 
-  //   const scrapedData = await puppeteerInfiniteScroller(page, options);
-
-  //   // Add your assertions for scrapedData
-  //   expect(scrapedData.length).toBeGreaterThanOrEqual(50);
-  //   // Add more assertions based on your specific data structure
-  // });
+      const scrapedData = await puppeteerInfiniteScroller(
+        pageWithPageFunctionOption,
+        options
+      );
+      // Add your assertions for scrapedData
+      expect(scrapedData.length).toBe(200);
+      // Add more assertions based on your specific data structure
+    },
+    1000 * 60
+  );
 
   afterAll(async () => {
     await browser.close();

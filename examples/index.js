@@ -21,16 +21,17 @@ async function extractElementsFromResponse() {
   await page.waitForSelector(".blocks .blocks__block");
 
   // using extractItems function
-  // const images = await scrapeInfiniteScroller(page, {
-  //   pageFunction: extractElements,
-  //   itemCount: 20,
-  // });
-
-  // using selector
   const boxes = await puppeteerInfiniteScroller(page, {
-    selector: ".blocks .blocks__block",
+    pageFunction: extractElements,
     itemCount: 200,
   });
+
+  // using selector
+
+  // const boxes = await puppeteerInfiniteScroller(page, {
+  //   selector: ".blocks .blocks__block",
+  //   itemCount: 200,
+  // });
 
   await browser.close();
 
@@ -38,24 +39,15 @@ async function extractElementsFromResponse() {
   writeToFile("boxes.json", JSON.stringify(boxes));
 }
 function extractElements() {
-  // this method is executed in every scrolled page
-  // You have access to document here
-  // select the elements you want and push them into the array
-  const extractedElements = document.querySelectorAll(
-    "[role='list'] > [role='listitem']"
-  );
   const items = [];
+  const extractedElements = document.querySelectorAll(".blocks .blocks__block");
   for (let element of extractedElements) {
     items.push({
-      alt: element.querySelector("img").getAttribute("alt"),
-      id: element.querySelector("a").getAttribute("href").split("/")[2],
-      src: element
-        .querySelector("img")
-        .getAttribute("src")
-        .replace("236x", "564x"),
+      class: element.getAttribute("class"),
+      id: element.getAttribute("id"),
+      tagName: element.tagName,
     });
   }
-  // finally return the array of extracted items
   return items;
 }
 // write response data to a file for debugging
