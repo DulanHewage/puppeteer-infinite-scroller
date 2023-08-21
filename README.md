@@ -17,18 +17,26 @@ Import the scrapeInfiniteScroller function from the package and use it to scrape
 const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
 
 (async () => {
+  const pageUrl = "https://infiniteajaxscroll.com/examples/blocks/";
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  await page.setViewport({
+    width: 1200,
+    height: 800,
+  });
+
+  await page.goto(pageUrl);
+  await page.waitForSelector(".blocks .blocks__block");
 
   const options = {
     scrollDelay: 1000,      // Milliseconds between scrolls
     itemCount: 50,          // Number of items to scrape
-    selector: '.item',      // CSS selector for items
+    selector: '.blocks .blocks__block',      // CSS selector for items
     // OR
     // pageFunction: () => { /* Custom page function for scraping */ }
   };
 
-  const scrapedData = await scrapeInfiniteScroller(page, options);
+  const scrapedData = await puppeteerInfiniteScroller(page, options);
 
   console.log(scrapedData);
 
@@ -51,28 +59,37 @@ The following options can be configured when using the `scrapeInfiniteScroller` 
 const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
 
 (async () => {
+  const pageUrl = "https://infiniteajaxscroll.com/examples/blocks/";
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  await page.setViewport({
+    width: 1200,
+    height: 800,
+  });
+
+  await page.goto(pageUrl);
+  await page.waitForSelector(".blocks .blocks__block");
+
+  function extractElements() {
+    const items = [];
+    const extractedElements = document.querySelectorAll(".blocks .blocks__block");
+    for (let element of extractedElements) {
+      items.push({
+        class: element.getAttribute("class"),
+        id: element.getAttribute("id"),
+        tagName: element.tagName,
+      });
+    }
+    return items;
+  }
 
   const options = {
     scrollDelay: 1000,      // Milliseconds between scrolls
     itemCount: 50,          // Number of items to scrape
-    pageFunction: () => {
-      // Custom function for scraping data from the page
-      const extractedElements = document.querySelectorAll(".box img");
-      const items = [];
-      for (let element of extractedElements) {
-        items.push({
-          alt: element.getAttribute("alt"),
-          id: element.closest("a").getAttribute("href").split("/")[2],
-          src: element.getAttribute("src"),
-        });
-      }
-      return items;
-    }
+    pageFunction: extractElements
   };
 
-  const scrapedData = await scrapeInfiniteScroller(page, options);
+  const scrapedData = await puppeteerInfiniteScroller(page, options);
 
   console.log(scrapedData);
 
