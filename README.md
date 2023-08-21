@@ -37,7 +37,7 @@ const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
     // pageFunction: () => { /* Custom page function for scraping */ }
   };
 
-  const scrapedData = await puppeteerInfiniteScroller(page, options);
+  const scrapedData = await scrapeInfiniteScroller(page, options);
 
   console.log(scrapedData);
 
@@ -91,7 +91,7 @@ const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
     pageFunction: extractElements
   };
 
-  const scrapedData = await puppeteerInfiniteScroller(page, options);
+  const scrapedData = await scrapeInfiniteScroller(page, options);
 
   console.log(scrapedData);
 
