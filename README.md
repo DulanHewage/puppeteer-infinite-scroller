@@ -14,6 +14,7 @@ npm install puppeteer-infinite-scroller
 Import the scrapeInfiniteScroller function from the package and use it to scrape data from infinite scrolling web pages.
 
 ```javascript
+const puppeteer = require("puppeteer");
 const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
 
 (async () => {
@@ -56,6 +57,7 @@ The following options can be configured when using the `scrapeInfiniteScroller` 
 ## Example with pageFunction option
 
 ```javascript
+const puppeteer = require("puppeteer");
 const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
 
 (async () => {
