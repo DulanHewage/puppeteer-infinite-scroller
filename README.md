@@ -15,7 +15,7 @@ Import the scrapeInfiniteScroller function from the package and use it to scrape
 
 ```javascript
 const puppeteer = require("puppeteer");
-const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
+const { puppeteerInfiniteScroller } = require('puppeteer-infinite-scroller');
 
 (async () => {
   const pageUrl = "https://infiniteajaxscroll.com/examples/blocks/";
@@ -37,7 +37,7 @@ const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
     // pageFunction: () => { /* Custom page function for scraping */ }
   };
 
-  const scrapedData = await scrapeInfiniteScroller(page, options);
+  const scrapedData = await puppeteerInfiniteScroller(page, options);
 
   console.log(scrapedData);
 
@@ -47,7 +47,7 @@ const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
 
 ## Options
 
-The following options can be configured when using the `scrapeInfiniteScroller` function:
+The following options can be configured when using the `puppeteerInfiniteScroller` function:
 
 - `scrollDelay` (optional): Milliseconds between scrolls. Default is 1000ms.
 - `itemCount` (optional): Number of items to scrape. Default is 10.
@@ -58,7 +58,7 @@ The following options can be configured when using the `scrapeInfiniteScroller` 
 
 ```javascript
 const puppeteer = require("puppeteer");
-const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
+const { puppeteerInfiniteScroller } = require('puppeteer-infinite-scroller');
 
 (async () => {
   const pageUrl = "https://infiniteajaxscroll.com/examples/blocks/";
@@ -91,7 +91,7 @@ const { scrapeInfiniteScroller } = require('puppeteer-infinite-scroller');
     pageFunction: extractElements
   };
 
-  const scrapedData = await scrapeInfiniteScroller(page, options);
+  const scrapedData = await puppeteerInfiniteScroller(page, options);
 
   console.log(scrapedData);
 
