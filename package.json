@@ -1,10 +1,14 @@
 {
-  "name": "@dulanHewage/puppeteer-infinite-scroller",
+  "name": "puppeteer-infinite-scroller",
   "version": "1.0.0",
   "description": "Provides a simple and efficient solution for scraping data loaded through infinite scrolling on web pages using Puppeteer.",
   "main": "index.js",
   "scripts": {
-    "test:unit": "jest"
+    "test": "jest",
+    "example": "node examples/index.js",
+    "release:major": "npm version $(semver $npm_package_version -i major) && npm publish --tag latest",
+    "release:minor": "npm version $(semver $npm_package_version -i minor) && npm publish --tag latest",
+    "release:patch": "npm version $(semver $npm_package_version -i patch) && npm publish --tag latest"
   },
   "repository": {
     "type": "git",
