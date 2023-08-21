@@ -15,7 +15,7 @@ Import the scrapeInfiniteScroller function from the package and use it to scrape
 
 ```javascript
 const puppeteer = require("puppeteer");
-const { puppeteerInfiniteScroller } = require('puppeteer-infinite-scroller');
+const puppeteerInfiniteScroller = require('puppeteer-infinite-scroller');
 
 (async () => {
   const pageUrl = "https://infiniteajaxscroll.com/examples/blocks/";
@@ -58,7 +58,7 @@ The following options can be configured when using the `puppeteerInfiniteScrolle
 
 ```javascript
 const puppeteer = require("puppeteer");
-const { puppeteerInfiniteScroller } = require('puppeteer-infinite-scroller');
+const puppeteerInfiniteScroller = require('puppeteer-infinite-scroller');
 
 (async () => {
   const pageUrl = "https://infiniteajaxscroll.com/examples/blocks/";
