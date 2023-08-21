@@ -13,7 +13,7 @@ npm install puppeteer-infinite-scroller
 ```
 
 ## Usage
-Import the scrapeInfiniteScroller function from the package and use it to scrape data from infinite scrolling web pages.
+Import the puppeteerInfiniteScroller function from the package and use it to scrape data from infinite scrolling web pages.
 
 ```javascript
 const puppeteer = require("puppeteer");
