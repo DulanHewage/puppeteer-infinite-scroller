@@ -1,4 +1,6 @@
 # Puppeteer-Infinite-Scroller
+[![NPM Version](https://badge.fury.io/js/puppeteer-infinite-scroller.svg?style=flat)](https://www.npmjs.com/package/puppeteer-infinite-scroller)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/DulanHewage/puppeteer-infinite-scroller/issues)
 
 Puppeteer-Infinite-Scroller provides a simple and efficient solution for scraping data loaded through infinite scrolling on web pages using Puppeteer.
 
@@ -11,7 +13,7 @@ npm install puppeteer-infinite-scroller
 ```
 
 ## Usage
-Import the scrapeInfiniteScroller function from the package and use it to scrape data from infinite scrolling web pages.
+Import the puppeteerInfiniteScroller function from the package and use it to scrape data from infinite scrolling web pages.
 
 ```javascript
 const puppeteer = require("puppeteer");
