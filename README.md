@@ -1,4 +1,4 @@
-# Puppeteer-Infinite-Scroller
+# Puppeteer Infinite Scroller
 [![NPM Version](https://badge.fury.io/js/puppeteer-infinite-scroller.svg?style=flat)](https://www.npmjs.com/package/puppeteer-infinite-scroller)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/DulanHewage/puppeteer-infinite-scroller/issues)
 
