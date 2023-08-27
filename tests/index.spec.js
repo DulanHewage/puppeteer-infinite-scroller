@@ -1,5 +1,5 @@
 const puppeteer = require("puppeteer");
-const puppeteerInfiniteScroller = require("../index");
+const puppeteerInfiniteScroller = require("../lib/index.js");
 // const { error } = require("console");
 
 describe("puppeteerInfiniteScroller", () => {

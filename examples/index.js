@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const { writeToFile } = require("./utils");
 
-const puppeteerInfiniteScroller = require("../index");
+const puppeteerInfiniteScroller = require("../lib/index.js");
 
 (async () => {
   const pageUrl = "https://infiniteajaxscroll.com/examples/blocks/";
