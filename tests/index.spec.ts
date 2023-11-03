@@ -1,19 +1,21 @@
+import { Browser, Page } from "puppeteer";
+
 const puppeteer = require("puppeteer");
 const puppeteerInfiniteScroller = require("../lib/index.js");
 // const { error } = require("console");
 
 describe("puppeteerInfiniteScroller", () => {
-  let browser;
-  let pageWithSelectorOption;
-  let pageWithPageFunctionOption;
+  let browser: Browser;
+  let pageWithSelectorOption: Page;
+  let pageWithPageFunctionOption: Page;
 
   const selector = ".blocks .blocks__block";
   const pageUrl = "https://infiniteajaxscroll.com/examples/blocks/";
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({
+    browser = (await puppeteer.launch({
       headless: false,
-    });
+    })) as Browser;
     // initialize page with selector option
     pageWithSelectorOption = await browser.newPage();
     await pageWithSelectorOption.setViewport({
@@ -34,7 +36,7 @@ describe("puppeteerInfiniteScroller", () => {
   });
 
   // selector option tests
-  let scrapedData;
+  let scrapedData: object[] = [];
   it(
     "scrapes data using selector option",
     async () => {
