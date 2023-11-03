@@ -1,4 +1,9 @@
-async function puppeteerInfiniteScroller(page, options) {
+import { Page, EvaluateFunc } from "puppeteer";
+import { Options } from "./types";
+async function puppeteerInfiniteScroller(
+  page: Page,
+  options: Options
+): Promise<any[]> {
   // Destructure options
   const {
     scrollDelay = 1000,
@@ -40,25 +45,25 @@ async function puppeteerInfiniteScroller(page, options) {
       scrollDelay
     );
     return items;
-  } catch (e) {
+  } catch (e: any) {
     console.log("Error:", e.message);
     return []; // Return an empty array in case of an error
   }
 }
 
 async function recursiveScroll(
-  page,
-  items,
-  itemCount,
-  selector,
-  pageFunction,
-  scrollDelay
+  page: Page,
+  items: any[],
+  itemCount: number,
+  selector: string | undefined,
+  pageFunction: Function | undefined,
+  scrollDelay: number
 ) {
   if (itemCount <= items.length) {
     // slice the array to match the itemCount
     return items.slice(0, itemCount);
   }
-  let extractedItems = [];
+  let extractedItems: object[] = [];
 
   if (selector) {
     extractedItems = await page.evaluate((selector) => {
@@ -66,7 +71,7 @@ async function recursiveScroll(
       const els = Array.from(elements);
       return els.map((element) => {
         const attributes = Array.from(element.attributes).reduce(
-          (acc, attr) => {
+          (acc: any, attr) => {
             acc[attr.name] = element.getAttribute(attr.name);
             return acc;
           },
@@ -79,7 +84,9 @@ async function recursiveScroll(
       });
     }, selector);
   } else if (pageFunction) {
-    extractedItems = await page.evaluate(pageFunction);
+    extractedItems = (await page.evaluate(
+      pageFunction as EvaluateFunc<any>
+    )) as object[];
   }
 
   items.push(...extractedItems);
