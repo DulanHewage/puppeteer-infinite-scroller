@@ -1,6 +1,6 @@
 {
   "name": "puppeteer-infinite-scroller",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Provides a simple and efficient solution for scraping data loaded through infinite scrolling on web pages using Puppeteer.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
