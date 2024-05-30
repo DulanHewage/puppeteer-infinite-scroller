@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/DulanHewage/puppeteer-infinite-scroller/assets/15976939/4f644922-6b20-4b39-8f89-226d76bf2880" alt="Puppeteer Infinite Scroller"/ width="280">
+</p>
+
 # Puppeteer Infinite Scroller
 [![NPM Version](https://badge.fury.io/js/puppeteer-infinite-scroller.svg?style=flat)](https://www.npmjs.com/package/puppeteer-infinite-scroller)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/DulanHewage/puppeteer-infinite-scroller/issues)
